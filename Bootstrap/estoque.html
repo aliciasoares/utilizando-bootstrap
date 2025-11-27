@@ -4,103 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Estoque</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
+        :root {
+            --choco-dark: #4b2e12;
+            --choco-medium: #6b3f1f;
+            --choco-btn: #8b4513;
+        }
 
-    body {
-    background-color: #f6f0e8; 
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+        body { background-color: #f6f0e8; }
 
-    header, nav {
-    background-color: #4b2e12; 
-}
+        .navbar { background-color: var(--choco-dark) !important; }
+        .table thead { background-color: var(--choco-medium); color: white; }
 
-    header h1, .nav-link {
-    color: #fff !important;
-}
+        .btn-choco {
+            background-color: var(--choco-btn);
+            color: white;
+        }
+        .btn-choco:hover { background-color: #6f3410; }
 
-    .nav-link:hover {
-    color: #d9c3a3 !important;
-}
+        .estoque-baixo { background-color: #ffdddd !important; }
 
-    .table thead {
-    background-color: #6b3f1f; 
-    color: #fff;
-}
+        footer {
+            background-color: var(--choco-dark);
+            color: white;
+        }
 
-    .btn-choco {
-    background-color: #8b4513; 
-    color: white;
-}
+        @media (max-width: 768px) {
+            .table { display: none; }
+        }
 
-    .btn-choco:hover {
-    background-color: #6f3410;
-    color: white;
-}
-
-
-    .estoque-baixo {
-    background-color: #ffdddd !important;
-}
-
-
-    footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #4b2e12;
-    color: white;
-}
-
-</style>
-
+        @media (min-width: 769px) {
+            .card-mobile { display: none !important; }
+        }
+    </style>
 </head>
-<body>
+
+<body class="d-flex flex-column min-vh-100">
 
     <nav class="navbar navbar-expand-lg navbar-dark px-4 py-3">
-        <a class="navbar-brand" href="#">Estoque de chocolate</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item ms-3"><a class="nav-link" href="dashboard.html">Estoque</a></li>
-                <li class="nav-item ms-3"><a class="nav-link" href="cadastro.html">Cadastro</a></li>
-                <li class="nav-item ms-3"><a class="nav-link" href="index.html">Sair</a></li>
-            </ul>
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">Estoque de Chocolate</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item ms-3"><a class="nav-link" href="dashboard.html">Estoque</a></li>
+                    <li class="nav-item ms-3"><a class="nav-link" href="cadastro.html">Cadastro</a></li>
+                    <li class="nav-item ms-3"><a class="nav-link" href="index.html">Sair</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
-
-    <div class="container mt-4">
+    <div class="container mt-4 mb-5 flex-grow-1">
 
         <h2 class="mb-4">Gerenciamento de Estoque</h2>
-        <div class="row mb-3">
-            <div class="col-md-6">
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-md-6">
                 <input type="text" class="form-control" placeholder="Buscar produto...">
             </div>
-            <div class="col-md-2">
+            <div class="col-12 col-md-2">
                 <button class="btn btn-choco w-100">Buscar</button>
             </div>
         </div>
 
+
         <div class="table-responsive">
-            <table class="table table-bordered table-striped align-middle">
+            <table class="table table-bordered table-striped align-middle text-center">
                 <thead>
                     <tr>
                         <th>Nome</th>
                         <th>Categoria</th>
                         <th>Quantidade</th>
                         <th>Preço</th>
-                        <th class="text-center">Ações</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr>
                         <td>Chocolate ao Leite</td>
                         <td>Barras</td>
                         <td>120</td>
                         <td>R$ 7,50</td>
-                        <td class="text-center">
+                        <td>
                             <button class="btn btn-sm btn-warning">Editar</button>
                             <button class="btn btn-sm btn-danger">Excluir</button>
                             <button class="btn btn-sm btn-choco">Ajustar</button>
@@ -112,7 +103,7 @@
                         <td>Trufas</td>
                         <td>4</td>
                         <td>R$ 3,00</td>
-                        <td class="text-center">
+                        <td>
                             <button class="btn btn-sm btn-warning">Editar</button>
                             <button class="btn btn-sm btn-danger">Excluir</button>
                             <button class="btn btn-sm btn-choco">Ajustar</button>
@@ -124,22 +115,69 @@
                         <td>Barras</td>
                         <td>45</td>
                         <td>R$ 9,90</td>
-                        <td class="text-center">
+                        <td>
                             <button class="btn btn-sm btn-warning">Editar</button>
                             <button class="btn btn-sm btn-danger">Excluir</button>
                             <button class="btn btn-sm btn-choco">Ajustar</button>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
 
+        <div class="card-mobile">
+
+            <div class="card mb-3 shadow-sm p-3">
+                <h5>Chocolate ao Leite</h5>
+                <p class="mb-1"><strong>Categoria:</strong> Barras</p>
+                <p class="mb-1"><strong>Quantidade:</strong> 120</p>
+                <p class="mb-1"><strong>Preço:</strong> R$ 7,50</p>
+
+                <div class="d-flex gap-2 mt-2 flex-wrap">
+                    <button class="btn btn-warning btn-sm flex-fill">Editar</button>
+                    <button class="btn btn-danger btn-sm flex-fill">Excluir</button>
+                    <button class="btn btn-choco btn-sm flex-fill">Ajustar</button>
+                </div>
+            </div>
+
+
+            <div class="card mb-3 shadow-sm p-3 bg-danger-subtle">
+                <h5>Trufa de Maracujá</h5>
+                <p class="mb-1"><strong>Categoria:</strong> Trufas</p>
+                <p class="mb-1"><strong>Quantidade:</strong> 4</p>
+                <p class="mb-1"><strong>Preço:</strong> R$ 3,00</p>
+
+                <div class="d-flex gap-2 mt-2 flex-wrap">
+                    <button class="btn btn-warning btn-sm flex-fill">Editar</button>
+                    <button class="btn btn-danger btn-sm flex-fill">Excluir</button>
+                    <button class="btn btn-choco btn-sm flex-fill">Ajustar</button>
+                </div>
+            </div>
+
+    
+            <div class="card mb-3 shadow-sm p-3">
+                <h5>Chocolate 70%</h5>
+                <p class="mb-1"><strong>Categoria:</strong> Barras</p>
+                <p class="mb-1"><strong>Quantidade:</strong> 45</p>
+                <p class="mb-1"><strong>Preço:</strong> R$ 9,90</p>
+
+                <div class="d-flex gap-2 mt-2 flex-wrap">
+                    <button class="btn btn-warning btn-sm flex-fill">Editar</button>
+                    <button class="btn btn-danger btn-sm flex-fill">Excluir</button>
+                    <button class="btn btn-choco btn-sm flex-fill">Ajustar</button>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <footer class="text-center py-3 mt-4" style="background-color:#4b2e12; color:white;">
-        © 2025 AM Doces -Todos os direitos reservados
+
+    <footer class="text-center py-3 mt-auto">
+        © 2025 AM Doces - Todos os direitos reservados
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
